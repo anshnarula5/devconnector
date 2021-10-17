@@ -45,7 +45,7 @@ router.get("/", auth, async (req, res) => {
   }
 });
 
-module.exports = router;
+
 
 //@route  GET api/posts/:id
 //@desc   Get post by ID
@@ -147,7 +147,7 @@ router.put("/dislike/:id", auth, async (req, res) => {
 
 const validateComment = [check("text", "Text is required").not().isEmpty()];
 
-router.post("/comment/:id", [auth, validatePost], async (req, res) => {
+router.post("/comment/:id", [auth, validateComment], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
