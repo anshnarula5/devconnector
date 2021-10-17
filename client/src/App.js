@@ -5,8 +5,20 @@ import { Switch, Route } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Alert from "./components/layout/Alert";
+import { loadUser } from "./redux/actions/auth";
+import {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import setAuthToken from "./utils/setAuthToken";
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token)
+}
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(loadUser())
+  }, [])
   return (
     <>
       <Navbar />
