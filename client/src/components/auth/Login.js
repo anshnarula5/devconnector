@@ -1,20 +1,35 @@
 import React, { Fragment, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Login = () => {
+const Register = () => {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const { email, password } = formData;
+
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("success");
+  };
   return (
     <Fragment>
       <section className="container">
-        <h1 className="large text-primary">Sign In</h1>
+        <h1 className="large text-primary">dev</h1>
         <p className="lead">
-          <i className="fas fa-user"></i> Log in to your account
+          <i className="fas fa-user"></i> Create Your Account
         </p>
-        <form className="form" action="create-profile.html">
+        <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
             <input
               type="email"
               placeholder="Email Address"
               name="email"
+              value={email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -24,21 +39,19 @@ const Login = () => {
               placeholder="Password"
               name="password"
               minLength="6"
+              value={password}
+              onChange={handleChange}
               required
             />
           </div>
-          <input
-            type="submit"
-            className="btn btn-primary"
-            value="Register"
-          />
+          <input type="submit" className="btn btn-primary" value="Register" />
         </form>
         <p className="my-1">
-          Don't have an account? <Link to="/register">Sign Up</Link>
+          Dont have an account? <Link to="/login">Sign Up</Link>
         </p>
       </section>
     </Fragment>
   );
 };
 
-export default Login;
+export default Register;

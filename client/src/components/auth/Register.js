@@ -2,7 +2,25 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Register = () => {
- 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+  const { name, email, password, password2 } = formData;
+
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (password2 !== password) {
+      console.log("Passwords dont match");
+    } else {
+      console.log("success")
+    }
+  };
   return (
     <Fragment>
       <section className="container">
@@ -10,12 +28,15 @@ const Register = () => {
         <p className="lead">
           <i className="fas fa-user"></i> Create Your Account
         </p>
-        <form className="form" action="create-profile.html">
+        <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
+            <h2>{name}</h2>
             <input
               type="text"
               placeholder="Name"
               name="name"
+              value={name}
+              onChange={handleChange}
               required
             />
           </div>
@@ -24,6 +45,8 @@ const Register = () => {
               type="email"
               placeholder="Email Address"
               name="email"
+              value={email}
+              onChange={handleChange}
               required
             />
             <small className="form-text">
@@ -37,6 +60,8 @@ const Register = () => {
               placeholder="Password"
               name="password"
               minLength="6"
+              value={password}
+              onChange={handleChange}
               required
             />
           </div>
@@ -46,6 +71,8 @@ const Register = () => {
               placeholder="Confirm Password"
               name="password2"
               minLength="6"
+              value={[password2]}
+              onChange={handleChange}
               required
             />
           </div>
