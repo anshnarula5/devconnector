@@ -1,10 +1,12 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import {useDispatch} from "react-redux"
-import {setAlert} from "../../redux/actions/alert";
+import { Link, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setAlert } from "../../redux/actions/alert";
 import {register} from "../../redux/actions/auth";
+
 const Register = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,13 +20,16 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
+    console.log(formData);
     if (password2 !== password) {
-      dispatch(setAlert("Passwords do not match", "danger"))
+      dispatch(setAlert("Passwords do not match", "danger"));
     } else {
-      dispatch(register({name, email, password}))
+      dispatch(register({ name, email, password }));
     }
   };
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <Fragment>
       <section className="container">

@@ -9,7 +9,8 @@ export const loadUser = () => async (dispatch) => {
     }
     try {
         const res = await axios.get("/api/auth")
-        dispatch({type : "USER_LOADED", payload : res.data})
+        dispatch({type: "USER_LOADED", payload: res.data})
+        
     } catch (error) {
         dispatch({type : "AUTH_ERROR"})
     }
@@ -26,7 +27,8 @@ export const register = ({email, password, name}) => async (dispatch) => {
     }
     try {
         const res = await axios.post("/api/users", {name, email, password}, config)
-        dispatch({type: "REGISTER_SUCCESS", payload : res.data})
+        dispatch({type: "REGISTER_SUCCESS", payload: res.data})
+        dispatch(loadUser())
     } catch (error) {
         const errors = error.response.data.errors
         if (errors) {
@@ -46,7 +48,8 @@ export const login = ({email, password}) => async (dispatch) => {
     }
     try {
         const res = await axios.post("/api/auth", { email, password}, config)
-        dispatch({type: "LOGIN_SUCCESS", payload : res.data})
+        dispatch({type: "LOGIN_SUCCESS", payload: res.data})
+        dispatch(loadUser())
     } catch (error) {
         const errors = error.response.data.errors
         if (errors) {
@@ -54,4 +57,8 @@ export const login = ({email, password}) => async (dispatch) => {
         }
         dispatch({type : "LOGIN_FAIL"})
     }
-}       
+}
+
+export const logout = () => dispatch => {
+    dispatch({type : "LOGOUT"})
+}
