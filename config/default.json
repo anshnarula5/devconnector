@@ -1,6 +1,9 @@
 {
-    "mongoURI": "mongodb+srv://ansh:ansh123@cluster0.hahzl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongoURI": "mongodb://localhost:27017/connector",
     "jwtSecret": "mysecret",
     "githubClientId": "479e9aa4bfb6219c86d8",
-    "githubSecret": "ac4ae5b1401a0a67aa2f3b691d04527424598358"
+    "githubSecret": "ac4ae5b1401a0a67aa2f3b691d04527424598358",
+    "some" : "mongodb+srv://ansh:ansh123@cluster0.hahzl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
 }
+

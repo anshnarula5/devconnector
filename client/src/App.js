@@ -12,6 +12,9 @@ import setAuthToken from "./utils/setAuthToken";
 import Dashboard from "./components/dashboard/Dashboard";
 import Privateroute from "./components/routing/Privateroute";
 import Createprofile from "./components/layout/profileForms/CreateProfile";
+import EditProfile from "./components/layout/profileForms/EditProfile";
+import AddExperience from "./components/layout/profileForms/AddExperience";
+import AddEducation from "./components/layout/profileForms/AddEducation";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token)
@@ -33,6 +36,9 @@ function App() {
           <Route exact path="/register" component={Register} />
           <Privateroute exact path="/dashboard" component={Dashboard} />
           <Route exact path="/create-profile" component={Createprofile} />
+          <Route exact path="/edit-profile" component={EditProfile} />
+          <Route exact path="/add-experience" component={AddExperience} />
+          <Route exact path="/add-education" component={AddEducation} />
         </Switch>
       </section>
     </>

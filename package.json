@@ -23,6 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.11",
     "nodemon": "^2.0.13",
+    "react-moment": "^1.1.1",
     "request": "^2.88.2"
   }
 }

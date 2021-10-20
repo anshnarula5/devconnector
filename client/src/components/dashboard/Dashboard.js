@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProfile } from "../../redux/actions/profile";
 import Spinner from "../layout/Spinner";
 import { Link } from "react-router-dom";
+import DashboardActions from "./DashboardActions";
+import Experience from "./Experience";
+import Education from "./Education";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -22,7 +25,11 @@ const Dashboard = () => {
         <i className="fas fa-user"></i> Welcome {user && user.name}
       </p>
       {profile ? (
-        <>has</>
+        <>
+            <DashboardActions />
+            {profile.experience ? <Experience experience={profile.experience}/> : <h2  className = "my-3">Add Experience</h2>}
+            {profile.education.length ? <Education education={profile.education}/> : <h2 className = "my-3">Add Education</h2>}
+        </>
       ) : (
         <>
           <p>No profile yet, want to create one ?</p>
