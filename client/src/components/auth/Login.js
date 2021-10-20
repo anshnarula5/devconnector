@@ -25,9 +25,9 @@ const Login = () => {
   return (
     <Fragment>
       <section className="container">
-        <h1 className="large text-primary">dev</h1>
+        <h1 className="large text-primary">Login</h1>
         <p className="lead">
-          <i className="fas fa-user"></i> Create Your Account
+          <i className="fas fa-user"></i> Log in to your account
         </p>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
@@ -51,7 +51,7 @@ const Login = () => {
               required
             />
           </div>
-          <input type="submit" className="btn btn-primary" value="Register" />
+          <input type="submit" className="btn btn-primary" value="Login" />
         </form>
         <p className="my-1">
           Dont have an account? <Link to="/register">Sign Up</Link>
