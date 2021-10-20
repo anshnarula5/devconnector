@@ -13,7 +13,7 @@ const Dashboard = () => {
   const { user } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(getCurrentProfile());
-  }, []);
+  }, [dispatch]);
   return loading && profile === null ? (
     <div style={{ width: "200px", margin: "auto", display: "block" }}>
       <Spinner />

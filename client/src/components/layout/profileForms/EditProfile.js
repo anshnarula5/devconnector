@@ -41,7 +41,7 @@ const EditProfile = () => {
       youtube: loading || !profile.social ? "" : profile.social.youtube,
       instagram: loading || !profile.social ? "" : profile.social.instagram,
     });
-  }, [loading, getCurrentProfile, dispatch]);
+  }, [loading, dispatch, profile]);
   const [toggleSocial, setToggleSocial] = useState(false);
   const {
     company,

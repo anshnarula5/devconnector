@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { loadUser, logout } from "../../redux/actions/auth";
+import {  logout } from "../../redux/actions/auth";
 
 const Navbar = () => {
   const { isAuthenticated, loading } = useSelector((state) => state.auth);
@@ -15,8 +15,11 @@ const Navbar = () => {
         <Link to = "/dashboard"> <i className="fas fa-user" ></i> <span className="hide-sm">Dashboard</span></Link>
       </li>
       <li onClick={handleLogout}>
-      <a href = ""> <i className="fas fa-sign-out-alt" ></i> <span className="hide-sm">Logout</span></a>
-    </li> 
+      <a href = "#!"> <i className="fas fa-sign-out-alt" ></i> <span className="hide-sm">Logout</span></a>
+      </li>
+      <li>
+        <Link to="/profiles">Profiles</Link>
+      </li>
     </ul>
   );
   const geustLinks = (
@@ -29,6 +32,9 @@ const Navbar = () => {
       </li>
       <li>
         <Link to="/login">Login</Link>
+      </li>
+      <li>
+        <Link to="/profiles">Profiles</Link>
       </li>
     </ul>
   );

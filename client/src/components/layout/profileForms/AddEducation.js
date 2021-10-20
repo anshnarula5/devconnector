@@ -74,7 +74,6 @@ const AddEducation = () => {
             <input
               type="checkbox"
               name="current"
-              value=""
               value={current}
               checked={current}
               onChange={() => {
